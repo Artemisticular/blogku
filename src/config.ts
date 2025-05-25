@@ -10,6 +10,17 @@ export const siteConfig: SiteConfig = {
 	title: "Artemistic",
 	subtitle: "Di Persimpangan Teknologi, Uang, dan Pikiran Bebas.",
 	lang: "id", // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko', 'es', 'th', 'id'
+	description:
+		"Blog tentang teknologi, keuangan, dan pemikiran bebas dalam bahasa Indonesia. Temukan artikel-artikel menarik tentang teknologi terkini, tips keuangan, dan berbagai pemikiran yang membuka wawasan.",
+	keywords: [
+		"teknologi",
+		"keuangan",
+		"pemikiran bebas",
+		"blog indonesia",
+		"artikel teknologi",
+		"tips keuangan",
+	],
+	author: "Artemistic",
 	themeColor: {
 		hue: 250, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
 		fixed: false, // Hide the theme color picker for visitors

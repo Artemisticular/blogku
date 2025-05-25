@@ -12,8 +12,8 @@ export async function GET(context: APIContext) {
 
 	return rss({
 		title: siteConfig.title,
-		description: siteConfig.subtitle || "No description",
-		site: context.site ?? "https://fuwari.vercel.app",
+		description: siteConfig.description || siteConfig.subtitle,
+		site: context.site ?? siteConfig.site,
 		items: blog.map((post) => {
 			const content =
 				typeof post.body === "string" ? post.body : String(post.body || "");
@@ -26,8 +26,14 @@ export async function GET(context: APIContext) {
 				content: sanitizeHtml(parser.render(content), {
 					allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
 				}),
+				categories: post.data.tags,
+				author: siteConfig.author,
 			};
 		}),
-		customData: `<language>${siteConfig.lang}</language>`,
+		customData: `
+			<language>${siteConfig.lang}</language>
+			<author>${siteConfig.author}</author>
+			<category>${siteConfig.keywords.join(", ")}</category>
+		`,
 	});
 }

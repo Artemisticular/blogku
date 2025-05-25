@@ -3,9 +3,10 @@ import type { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants";
 export type SiteConfig = {
 	title: string;
 	subtitle: string;
-
 	lang: string;
-
+	description: string;
+	keywords: string[];
+	author: string;
 	themeColor: {
 		hue: number;
 		fixed: boolean;
@@ -13,18 +14,17 @@ export type SiteConfig = {
 	banner: {
 		enable: boolean;
 		src: string;
-		position?: "top" | "center" | "bottom";
+		position: "top" | "center" | "bottom";
 		credit: {
 			enable: boolean;
 			text: string;
-			url?: string;
+			url: string;
 		};
 	};
 	toc: {
 		enable: boolean;
-		depth: 1 | 2 | 3;
+		depth: number;
 	};
-
 	favicon: Favicon[];
 };
 

@@ -1,5 +1,19 @@
 # About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
+Halo! Saya satyadheera, seorang pengembang dan penulis yang tertarik dengan teknologi, keuangan, dan pemikiran bebas.
+
+Blog ini adalah tempat saya berbagi pemikiran, pengalaman, dan pengetahuan tentang berbagai topik yang saya minati. Saya berharap konten di sini dapat memberikan nilai dan wawasan baru bagi pembaca.
+
+## Kontak
+Anda dapat menghubungi saya melalui:
+- [Instagram](https://www.instagram.com/satyadheeraa_/)
+- [LinkedIn](https://www.linkedin.com/in/satyadheeraa/)
+- [GitHub](https://github.com/artemistic)
+
+## Teknologi
+Blog ini dibangun menggunakan:
+- [Astro](https://astro.build) - Framework web modern untuk konten statis
+- [Tailwind CSS](https://tailwindcss.com) - Framework CSS utility-first
+- [Fuwari](https://github.com/saicaca/fuwari) - Template blog yang elegan dan minimalis
 
 ::github{repo="saicaca/fuwari"}
 

@@ -6,7 +6,7 @@
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build && pagefind --site dist && npm run postbuild",
-		"postbuild": "cpx -r dist/pagefind/** public/pagefind",
+		"postbuild": "cpx \"dist/pagefind/**/*\" public/pagefind",
 		"preview": "astro preview",
 		"astro": "astro",
 		"type-check": "tsc --noEmit --isolatedDeclarations",

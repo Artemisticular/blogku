@@ -1,0 +1,119 @@
+---
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+
+// This would typically come from a database or CMS
+const products = {
+	"1": {
+		id: "1",
+		name: "Product 1",
+		price: 29.99,
+		description:
+			"A wonderful product description with more details about the product. This is a longer description that would typically include features, specifications, and other important information about the product.",
+		image: "/images/products/product1.jpg",
+		category: "Category 1",
+		features: ["Feature 1", "Feature 2", "Feature 3"],
+		specifications: {
+			Material: "High quality material",
+			Size: "Standard size",
+			Weight: "Lightweight",
+		},
+	},
+	"2": {
+		id: "2",
+		name: "Product 2",
+		price: 39.99,
+		description:
+			"Another amazing product with detailed information. This product offers unique features and benefits that make it stand out from the competition.",
+		image: "/images/products/product2.jpg",
+		category: "Category 2",
+		features: ["Premium Feature 1", "Premium Feature 2", "Premium Feature 3"],
+		specifications: {
+			Material: "Premium material",
+			Size: "Large size",
+			Weight: "Medium weight",
+		},
+	},
+};
+
+const { productId } = Astro.params;
+const product = products[productId as keyof typeof products];
+
+if (!product) {
+	return Astro.redirect("/404");
+}
+---
+
+<MainGridLayout title={`${product.name} - Shop - Artemistic`}>
+  <main class="container mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Product Image -->
+      <div class="relative">
+        <img 
+          src={product.image} 
+          alt={product.name}
+          class="w-full h-auto rounded-lg shadow-lg"
+        />
+      </div>
+
+      <!-- Product Details -->
+      <div class="space-y-6">
+        <div>
+          <h1 class="text-4xl font-bold mb-2">{product.name}</h1>
+          <p class="text-2xl font-semibold text-blue-600">${product.price.toFixed(2)}</p>
+        </div>
+
+        <div class="prose dark:prose-invert max-w-none">
+          <p>{product.description}</p>
+        </div>
+
+        <!-- Features -->
+        <div>
+          <h2 class="text-2xl font-semibold mb-4">Features</h2>
+          <ul class="list-disc list-inside space-y-2">
+            {product.features.map(feature => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Specifications -->
+        <div>
+          <h2 class="text-2xl font-semibold mb-4">Specifications</h2>
+          <dl class="grid grid-cols-2 gap-4">
+            {Object.entries(product.specifications).map(([key, value]) => (
+              <>
+                <dt class="font-semibold">{key}</dt>
+                <dd>{value}</dd>
+              </>
+            ))}
+          </dl>
+        </div>
+
+        <!-- Add to Cart Button -->
+        <button 
+          class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+          data-product-id={product.id}
+        >
+          <Icon name="fa6-solid:cart-shopping" class="w-5 h-5" />
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </main>
+</MainGridLayout>
+
+<script>
+  // Add to cart functionality
+  const addToCartButton = document.querySelector('[data-product-id]');
+  
+  addToCartButton?.addEventListener('click', () => {
+    const productId = addToCartButton.getAttribute('data-product-id');
+    if (productId) {
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      cart.push(productId);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert('Product added to cart!');
+    }
+  });
+</script> 

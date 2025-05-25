@@ -36,8 +36,16 @@ const products = {
 	},
 };
 
-const { productId } = Astro.params;
-const product = products[productId as keyof typeof products];
+// Add getStaticPaths to generate static pages for each product
+export async function getStaticPaths() {
+	return Object.keys(products).map((productId) => ({
+		params: { productId },
+		props: { product: products[productId as keyof typeof products] },
+	}));
+}
+
+// Get the product from props instead of params
+const { product } = Astro.props;
 
 if (!product) {
 	return Astro.redirect("/404");

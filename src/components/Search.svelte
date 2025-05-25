@@ -58,13 +58,13 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 	try {
 		let searchResults: SearchResult[] = [];
 
-		if (import.meta.env.PROD && pagefindLoaded) {
+		if (typeof window !== "undefined" && window.pagefind) {
 			const response = await window.pagefind.search(keyword);
 			searchResults = await Promise.all(
 				response.results.map((item) => item.data()),
 			);
 		} else {
-			searchResults = fakeResult;
+			searchResults = [];
 		}
 
 		result = searchResults;

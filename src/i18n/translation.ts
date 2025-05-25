@@ -2,6 +2,7 @@ import { siteConfig } from "../config";
 import type I18nKey from "./i18nKey";
 import { en } from "./languages/en";
 import { es } from "./languages/es";
+import { id } from "./languages/id";
 import { ja } from "./languages/ja";
 import { ko } from "./languages/ko";
 import { th } from "./languages/th";
@@ -20,6 +21,8 @@ const map: { [key: string]: Translation } = {
 	en_us: en,
 	en_gb: en,
 	en_au: en,
+	id: id,
+	id_id: id,
 	zh_cn: zh_CN,
 	zh_tw: zh_TW,
 	ja: ja,

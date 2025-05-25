@@ -4,7 +4,6 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import { profileConfig, siteConfig } from "@/config";
-import Cart from "@components/Cart.astro";
 import ConfigCarrier from "@components/ConfigCarrier.astro";
 import {
 	AUTO_MODE,
@@ -162,7 +161,6 @@ const bannerOffset =
 		  data-overlayscrollbars-initialize
 	>
 		<ConfigCarrier></ConfigCarrier>
-		<Cart />
 		<slot />
 
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->

@@ -86,3 +86,15 @@ export type BlogPostData = {
 	nextTitle?: string;
 	nextSlug?: string;
 };
+
+export interface VideoConfig {
+	accessCode: string;
+	doodstreamApiKey: string;
+	videos: {
+		title: string;
+		description: string;
+		doodstreamId: string;
+		thumbnail?: string;
+		published: Date;
+	}[];
+}

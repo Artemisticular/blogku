@@ -46,9 +46,17 @@ export type NavBarLink = {
 	external?: boolean;
 };
 
-export type NavBarConfig = {
+export interface VideoPageConfig {
+	enable: boolean;
+	accessCode: string;
+	title: string;
+	description: string;
+}
+
+export interface NavBarConfig {
 	links: (NavBarLink | LinkPreset)[];
-};
+	videoPage?: VideoPageConfig;
+}
 
 export type ProfileConfig = {
 	avatar?: string;

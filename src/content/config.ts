@@ -19,6 +19,21 @@ const postsCollection = defineCollection({
 		nextSlug: z.string().default(""),
 	}),
 });
+
+const videoCollection = defineCollection({
+	type: "content",
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		thumbnail: z.string().optional(),
+		videoUrl: z.string(),
+		published: z.date(),
+		tags: z.array(z.string()).optional(),
+		category: z.string().optional(),
+	}),
+});
+
 export const collections = {
 	posts: postsCollection,
+	videos: videoCollection,
 };

@@ -55,11 +55,22 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Archive,
 		LinkPreset.About,
 		{
+			name: "Video",
+			url: "/video",
+			external: false,
+		},
+		{
 			name: "GitHub",
-			url: "https://github.com/saicaca/fuwari", // Internal links should not include the base path, as it is automatically added
-			external: true, // Show an external link icon and will open in a new tab
+			url: "https://github.com/artemistic",
+			external: true,
 		},
 	],
+	videoPage: {
+		enable: true,
+		accessCode: "Artesis8192",
+		title: "Video Collection",
+		description: "Koleksi video eksklusif yang membutuhkan kode akses",
+	},
 };
 
 export const profileConfig: ProfileConfig = {

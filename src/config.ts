@@ -47,20 +47,6 @@ export const siteConfig: SiteConfig = {
 		//   sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
 		// }
 	],
-	comments: {
-		enable: true,
-		provider: "giscus",
-		repo: "artemistic/artemistic.github.io",
-		repoId: "R_kgDOLQwXWw",
-		category: "Comments",
-		categoryId: "DIC_kwDOLQwXW84CgQwX",
-		mapping: "pathname",
-		reactionsEnabled: true,
-		emitMetadata: false,
-		inputPosition: "bottom",
-		theme: "preferred_color_scheme",
-		lang: "id",
-	},
 };
 
 export const navBarConfig: NavBarConfig = {

@@ -26,20 +26,6 @@ export type SiteConfig = {
 		depth: number;
 	};
 	favicon: Favicon[];
-	comments?: {
-		enable: boolean;
-		provider: "giscus";
-		repo: string;
-		repoId: string;
-		category: string;
-		categoryId: string;
-		mapping: "pathname" | "url" | "title" | "og:title";
-		reactionsEnabled: boolean;
-		emitMetadata: boolean;
-		inputPosition: "top" | "bottom";
-		theme: "light" | "dark" | "preferred_color_scheme";
-		lang: string;
-	};
 };
 
 export type Favicon = {

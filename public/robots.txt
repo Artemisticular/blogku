@@ -3,7 +3,7 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://artemistic.com/sitemap-index.xml
-
+ 
 # Disallow admin or private areas if you have any
 Disallow: /admin/
 Disallow: /private/ 

@@ -22,7 +22,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-	site: process.env.SITE_URL || "https://artemistic.com",
+	site: process.env.SITE_URL || "https://artemistic.online",
 	base: "/",
 	trailingSlash: "always",
 

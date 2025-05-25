@@ -1,50 +1,17 @@
 ---
 import { Icon } from "astro-icon/components";
+import { products } from "../../data/products";
 import MainGridLayout from "../../layouts/MainGridLayout.astro";
-
-// This would typically come from a database or CMS
-const products = {
-	"1": {
-		id: "1",
-		name: "Product 1",
-		price: 29.99,
-		description:
-			"A wonderful product description with more details about the product. This is a longer description that would typically include features, specifications, and other important information about the product.",
-		image: "/images/products/product1.jpg",
-		category: "Category 1",
-		features: ["Feature 1", "Feature 2", "Feature 3"],
-		specifications: {
-			Material: "High quality material",
-			Size: "Standard size",
-			Weight: "Lightweight",
-		},
-	},
-	"2": {
-		id: "2",
-		name: "Product 2",
-		price: 39.99,
-		description:
-			"Another amazing product with detailed information. This product offers unique features and benefits that make it stand out from the competition.",
-		image: "/images/products/product2.jpg",
-		category: "Category 2",
-		features: ["Premium Feature 1", "Premium Feature 2", "Premium Feature 3"],
-		specifications: {
-			Material: "Premium material",
-			Size: "Large size",
-			Weight: "Medium weight",
-		},
-	},
-};
 
 // Add getStaticPaths to generate static pages for each product
 export async function getStaticPaths() {
 	return Object.keys(products).map((productId) => ({
 		params: { productId },
-		props: { product: products[productId as keyof typeof products] },
+		props: { product: products[productId] },
 	}));
 }
 
-// Get the product from props instead of params
+// Get the product from props
 const { product } = Astro.props;
 
 if (!product) {

@@ -1,18 +1,16 @@
 ---
-import WidgetLayout from "./WidgetLayout.astro";
-
+import { categories } from "../../constants/categories";
 import I18nKey from "../../i18n/i18nKey";
 import { i18n } from "../../i18n/translation";
 import { getCategoryList } from "../../utils/content-utils";
 import { getCategoryUrl } from "../../utils/url-utils";
 import ButtonLink from "../control/ButtonLink.astro";
+import WidgetLayout from "./WidgetLayout.astro";
 
-const categories = await getCategoryList();
-
+const categoryList = await getCategoryList();
 const COLLAPSED_HEIGHT = "7.5rem";
 const COLLAPSE_THRESHOLD = 5;
-
-const isCollapsed = categories.length >= COLLAPSE_THRESHOLD;
+const isCollapsed = categoryList.length >= COLLAPSE_THRESHOLD;
 
 interface Props {
 	class?: string;
@@ -22,16 +20,44 @@ const className = Astro.props.class;
 const style = Astro.props.style;
 ---
 
-<WidgetLayout name={i18n(I18nKey.categories)} id="categories" isCollapsed={isCollapsed} collapsedHeight={COLLAPSED_HEIGHT}
-                class={className} style={style}
+<WidgetLayout 
+    name={i18n(I18nKey.categories)} 
+    id="categories" 
+    isCollapsed={isCollapsed} 
+    collapsedHeight={COLLAPSED_HEIGHT}
+    class={className} 
+    style={style}
 >
-    {categories.map((c) =>
-        <ButtonLink
-            url={getCategoryUrl(c.name.trim())}
-            badge={String(c.count)}
-            label={`View all posts in the ${c.name.trim()} category`}
-        >
-            {c.name.trim()}
-        </ButtonLink>
-    )}
+    <div class="flex flex-col gap-4">
+        {categories.map((category) => (
+            <div class="flex flex-col gap-2">
+                <ButtonLink
+                    url={getCategoryUrl(category.name)}
+                    badge={String(categoryList.find(c => c.name === category.name)?.count || 0)}
+                    label={`Lihat semua postingan dalam kategori ${category.name}`}
+                >
+                    {category.name}
+                </ButtonLink>
+                {category.description && (
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400 ml-2">
+                        {category.description}
+                    </p>
+                )}
+                {category.subcategories && category.subcategories.length > 0 && (
+                    <div class="flex flex-wrap gap-2 ml-4 mt-1">
+                        {category.subcategories.map((subcat) => (
+                            <div class="text-sm">
+                                <ButtonLink
+                                    url={getCategoryUrl(`${category.name}/${subcat.name}`)}
+                                    label={`Lihat postingan dalam subkategori ${subcat.name}`}
+                                >
+                                    {subcat.name}
+                                </ButtonLink>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+        ))}
+    </div>
 </WidgetLayout>

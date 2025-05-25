@@ -5,7 +5,7 @@ Blog ini adalah tempat saya berbagi pemikiran, pengalaman, dan pengetahuan tenta
 
 ## Kontak
 Anda dapat menghubungi saya melalui:
-- [Instagram](https://www.instagram.com/satyadheeraa_/)
+- [Instagram](https://www.instagram.com/satyadheera_/)
 - [LinkedIn](https://www.linkedin.com/in/satyadheeraa/)
 - [GitHub](https://github.com/artemistic)
 

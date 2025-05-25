@@ -55,14 +55,9 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Archive,
 		LinkPreset.About,
 		{
-			name: "Video",
-			url: "/videos",
-			icon: "material-symbols:video-library",
-		},
-		{
 			name: "GitHub",
-			url: "https://github.com/artemistic",
-			external: true,
+			url: "https://github.com/saicaca/fuwari", // Internal links should not include the base path, as it is automatically added
+			external: true, // Show an external link icon and will open in a new tab
 		},
 	],
 };

@@ -56,8 +56,8 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.About,
 		{
 			name: "Video",
-			url: "/video",
-			external: false,
+			url: "/videos",
+			icon: "material-symbols:video-library",
 		},
 		{
 			name: "GitHub",
@@ -65,12 +65,6 @@ export const navBarConfig: NavBarConfig = {
 			external: true,
 		},
 	],
-	videoPage: {
-		enable: true,
-		accessCode: "Artesis8192",
-		title: "Video Collection",
-		description: "Koleksi video eksklusif yang membutuhkan kode akses",
-	},
 };
 
 export const profileConfig: ProfileConfig = {

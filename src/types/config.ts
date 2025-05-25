@@ -40,23 +40,16 @@ export enum LinkPreset {
 	About = 2,
 }
 
-export type NavBarLink = {
+export interface NavBarLink {
 	name: string;
 	url: string;
 	external?: boolean;
-};
-
-export interface VideoPageConfig {
-	enable: boolean;
-	accessCode: string;
-	title: string;
-	description: string;
+	icon?: string;
 }
 
-export interface NavBarConfig {
+export type NavBarConfig = {
 	links: (NavBarLink | LinkPreset)[];
-	videoPage?: VideoPageConfig;
-}
+};
 
 export type ProfileConfig = {
 	avatar?: string;

@@ -1,0 +1,138 @@
+---
+import { Icon } from "astro-icon/components";
+import VideoAccess from "../components/widget/VideoAccess.astro";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+
+// Contoh data video (nanti bisa diambil dari API atau database)
+const videos = [
+	{
+		id: "doodstream-video-id-1",
+		title: "Video Tutorial 1",
+		description: "Deskripsi video tutorial pertama",
+		thumbnail: "https://example.com/thumbnail1.jpg",
+		duration: "10:30",
+	},
+	// Tambahkan video lainnya di sini
+];
+---
+
+<MainGridLayout title="Video Tutorial" description="Kumpulan video tutorial eksklusif">
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative">
+        <div class="card-base z-10 px-6 md:px-9 py-6 relative w-full">
+            <div class="flex items-center gap-3 mb-6">
+                <Icon name="material-symbols:video-library" class="text-2xl text-[var(--primary)]" />
+                <h1 class="text-2xl font-bold">Video Tutorial</h1>
+            </div>
+
+            <div id="videoAccessContainer">
+                <VideoAccess client:load />
+            </div>
+
+            <div id="videoContent" class="hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {videos.map(video => (
+                        <div class="card-base overflow-hidden">
+                            <div class="relative aspect-video">
+                                <img 
+                                    src={video.thumbnail} 
+                                    alt={video.title}
+                                    class="w-full h-full object-cover"
+                                />
+                                <div class="absolute bottom-2 right-2 bg-black/75 text-white px-2 py-1 rounded text-sm">
+                                    {video.duration}
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold mb-2">{video.title}</h3>
+                                <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                                    {video.description}
+                                </p>
+                                <button 
+                                    class="btn-regular w-full mt-4 flex items-center justify-center gap-2"
+                                    onclick={`playVideo('${video.id}')`}
+                                >
+                                    <Icon name="material-symbols:play-circle" class="text-xl" />
+                                    Tonton Video
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</MainGridLayout>
+
+<!-- Modal untuk memutar video -->
+<div id="videoModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+    <div class="bg-white dark:bg-neutral-900 rounded-xl p-4 max-w-4xl w-full mx-4">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="font-bold text-lg" id="videoTitle"></h3>
+            <button 
+                onclick="closeVideoModal()"
+                class="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg"
+            >
+                <Icon name="material-symbols:close" class="text-xl" />
+            </button>
+        </div>
+        <div class="aspect-video">
+            <iframe 
+                id="videoPlayer"
+                class="w-full h-full rounded-lg"
+                frameborder="0"
+                allowfullscreen
+            ></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Fungsi untuk mengecek status akses
+    function checkAccess() {
+        const hasAccess = localStorage.getItem('videoAccessGranted') === 'true';
+        const accessContainer = document.getElementById('videoAccessContainer');
+        const videoContent = document.getElementById('videoContent');
+        
+        if (hasAccess) {
+            accessContainer?.classList.add('hidden');
+            videoContent?.classList.remove('hidden');
+        } else {
+            accessContainer?.classList.remove('hidden');
+            videoContent?.classList.add('hidden');
+        }
+    }
+
+    // Fungsi untuk memutar video
+    function playVideo(videoId: string) {
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('videoPlayer') as HTMLIFrameElement;
+        
+        // Ganti dengan URL embed Doodstream yang sesuai
+        player.src = `https://dood.wf/e/${videoId}`;
+        modal?.classList.remove('hidden');
+        modal?.classList.add('flex');
+    }
+
+    // Fungsi untuk menutup modal
+    function closeVideoModal() {
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('videoPlayer') as HTMLIFrameElement;
+        
+        player.src = '';
+        modal?.classList.add('hidden');
+        modal?.classList.remove('flex');
+    }
+
+    // Set callback untuk ketika akses diberikan
+    (window as any).onVideoAccessGranted = checkAccess;
+
+    // Cek status akses saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', checkAccess);
+
+    // Tutup modal jika user klik di luar video
+    document.getElementById('videoModal')?.addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) {
+            closeVideoModal();
+        }
+    });
+</script> 

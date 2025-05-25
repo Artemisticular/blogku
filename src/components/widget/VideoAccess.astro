@@ -1,0 +1,55 @@
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    onAccessGranted: () => void;
+}
+
+const { onAccessGranted } = Astro.props;
+
+<div class="card-base p-6">
+    <div class="text-center mb-6">
+        <Icon name="material-symbols:lock-outline" class="text-4xl text-[var(--primary)] mb-3" />
+        <h2 class="text-xl font-bold mb-2">Akses Video</h2>
+        <p class="text-neutral-600 dark:text-neutral-400">Masukkan kode akses untuk melihat konten video</p>
+    </div>
+    
+    <form id="videoAccessForm" class="space-y-4">
+        <div>
+            <input 
+                type="password" 
+                id="accessCode" 
+                class="w-full px-4 py-2 rounded-lg border border-neutral-300 dark:border-neutral-700 
+                       bg-white dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                placeholder="Masukkan kode akses"
+                required
+            />
+        </div>
+        <button 
+            type="submit"
+            class="w-full btn-regular rounded-lg py-2 font-medium flex items-center justify-center gap-2"
+        >
+            <Icon name="material-symbols:login-rounded" class="text-xl" />
+            Akses Video
+        </button>
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById('videoAccessForm') as HTMLFormElement;
+    const accessCode = document.getElementById('accessCode') as HTMLInputElement;
+    const CORRECT_CODE = 'Artesis8192';
+
+    form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        if (accessCode.value === CORRECT_CODE) {
+            // Simpan status akses di localStorage
+            localStorage.setItem('videoAccessGranted', 'true');
+            // Panggil callback untuk memperbarui UI
+            (window as any).onVideoAccessGranted?.();
+        } else {
+            alert('Kode akses salah. Silakan coba lagi.');
+            accessCode.value = '';
+        }
+    });
+</script> 

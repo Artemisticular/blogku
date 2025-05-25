@@ -1,7 +1,7 @@
 # About
 Halo! Saya satyadheera, seorang pengembang dan penulis yang tertarik dengan teknologi, keuangan, dan pemikiran bebas.
 
-Blog ini adalah tempat saya berbagi pemikiran, pengalaman, dan pengetahuan tentang berbagai topik yang saya minati. Saya berharap konten di sini dapat memberikan nilai dan wawasan baru bagi pembaca. so selamat datang.
+Blog ini adalah tempat saya berbagi pemikiran, pengalaman, dan pengetahuan tentang berbagai topik yang saya minati. Saya berharap konten di sini dapat memberikan nilai dan wawasan baru bagi pembaca.
 
 ## Kontak
 Anda dapat menghubungi saya melalui:

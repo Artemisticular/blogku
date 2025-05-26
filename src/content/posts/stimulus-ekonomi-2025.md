@@ -1,10 +1,15 @@
 ---
-title: Stimulus Ekonomi dan Pelonggaran Likuiditas: Arah Baru Kebijakan Publik Indonesia
+title: "Stimulus Ekonomi dan Pelonggaran Likuiditas: Arah Baru Kebijakan Publik Indonesia"
 published: 2025-05-25
-description: Pemerintah dan Bank Indonesia mengambil langkah strategis melalui stimulus dan pelonggaran likuiditas untuk memperkuat pertumbuhan ekonomi kuartal kedua 2025.
-image: https://images.unsplash.com/photo-1581093448798-5df3f32f5c61?auto=format&fit=crop&w=1600&q=80
-tags: [ekonomi, kebijakan publik, BI, stimulus, fiskal]
-category: Ekonomi
+description: "Pemerintah dan Bank Indonesia mengambil langkah strategis melalui stimulus dan pelonggaran likuiditas untuk memperkuat pertumbuhan ekonomi kuartal kedua 2025."
+image: "https://images.unsplash.com/photo-1581093448798-5df3f32f5c61?auto=format&fit=crop&w=1600&q=80"
+tags: 
+  - ekonomi
+  - kebijakan publik
+  - BI
+  - stimulus
+  - fiskal
+category: "Ekonomi"
 draft: false
 ---
 
@@ -70,4 +75,4 @@ Ke depan, transparansi pelaksanaan dan efektivitas distribusi menjadi dua faktor
 **Referensi:**
 
 - [US News – Economic Stimulus Update](https://money.usnews.com/investing/news/articles/2025-05-24/indonesia-to-launch-economic-stimulus-to-boost-consumption)  
-- [Reuters – BI’s Liquidity Policy](https://www.reuters.com/sustainability/boards-policy-regulation/indonesia-central-bank-give-nearly-5-billion-flexibility-banks-manage-liquidity-2025-05-26/)
+- [Reuters – BI's Liquidity Policy](https://www.reuters.com/sustainability/boards-policy-regulation/indonesia-central-bank-give-nearly-5-billion-flexibility-banks-manage-liquidity-2025-05-26/)

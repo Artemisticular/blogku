@@ -84,9 +84,11 @@ const bannerOffset =
 		<meta name="description" content={description || siteConfig.description}>
 		<meta name="author" content={siteConfig.author}>
 		<meta name="keywords" content={siteConfig.keywords.join(", ")}>
-		<meta name="robots" content="index, follow">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="theme-color" content={`hsl(${configHue}, 100%, 50%)`}>
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content={setOGTypeArticle ? "article" : "website"} />
@@ -95,7 +97,10 @@ const bannerOffset =
 		<meta property="og:title" content={pageTitle}>
 		<meta property="og:description" content={description || siteConfig.description}>
 		<meta property="og:locale" content={siteLang}>
+		<meta property="og:image" content={banner ? url(banner) : url(siteConfig.banner.src)}>
+		<meta property="og:image:alt" content={pageTitle}>
 		{siteConfig.keywords && <meta property="og:keywords" content={siteConfig.keywords.join(", ")} />}
+		{setOGTypeArticle && <meta property="article:author" content={siteConfig.author} />}
 
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image">
@@ -104,6 +109,16 @@ const bannerOffset =
 		<meta property="twitter:url" content={Astro.url}>
 		<meta name="twitter:title" content={pageTitle}>
 		<meta name="twitter:description" content={description || siteConfig.description}>
+		<meta name="twitter:image" content={banner ? url(banner) : url(siteConfig.banner.src)}>
+		<meta name="twitter:image:alt" content={pageTitle}>
+
+		<!-- Additional SEO Meta Tags -->
+		<meta name="application-name" content={siteConfig.title}>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="default">
+		<meta name="apple-mobile-web-app-title" content={siteConfig.title}>
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="referrer" content="strict-origin-when-cross-origin">
 
 		<!-- Canonical URL -->
 		<link rel="canonical" href={Astro.url} />
